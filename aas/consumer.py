@@ -7,6 +7,7 @@ from  .location import local # for location fetching in the real time and gettin
 
 
 class LocationConsumer(WebsocketConsumer):
+# this is for web communication 
 
     def init_chat(self, data):
         username = data['username']
