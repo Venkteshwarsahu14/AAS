@@ -21,7 +21,7 @@ class UserAdmin(BaseUserAdmin):
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-          (_('user_info'), {'fields': ('owner_ph_no','dob','address','adhar','native_name','phone_no','vehicle','vehicle_location','city','zip','vehicle_fuel','vehicle_pol_status','accident')}),
+          (_('user_info'), {'fields': ('owner_ph_no','dob','address','adhar','native_name','native_phone_no','vehicle','vehicle_location','city','zip_code','vehicle_fuel','vehicle_pol_status','accident')}),
     )
     add_fieldsets = (
         (None, {
