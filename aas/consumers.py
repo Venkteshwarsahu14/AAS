@@ -33,7 +33,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
 
             await self.send(json.dumps({
                     "type":"websocket.send",
-                    "text":"hello world"
+                    "text":"wellcome you are connected"
                 })) 
             self.room_name='test_consumer'   
             self.room_group_name='test_consumer_group'
