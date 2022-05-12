@@ -42,7 +42,7 @@ class vehicle(models.Model):
     accident = models.BooleanField(default = False , null = True , blank = True)     
 
 class notifications(models.Model):
-    user_sender=models.ForeignKey(User,null=True,blank=True,related_name='user_sender',on_delete=models.CASCADE)
-    user_revoker=models.ForeignKey(User,null=True,blank=True,related_name='user_revoker',on_delete=models.CASCADE)
+    vehicle=models.CharField(max_length=264, null=True,blank=True)
+    location=models.CharField(max_length=264, null=True,blank=True)
     status=models.CharField(max_length=264,null=True,blank=True,default="unread")
-    type_of_notification=models.CharField(max_length=264,null=True,blank=True)
+    near_by_hos = models.CharField(max_length=400,null=True,blank=True)

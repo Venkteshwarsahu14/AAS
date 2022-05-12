@@ -20,9 +20,9 @@ def get_user(user_id):
 
 @database_sync_to_async
 def create_notification(receiver,typeof="task_created",status="unread"):
-    notification_to_create=notifications.objects.create(user_revoker=receiver,type_of_notification=typeof)
+    notification_obj =  notifications.objects.create(vehicle = vehicle ,location = loc ,near_by_hos = json.dumps(location)  )
     print('I am here to help')
-    return (notification_to_create.user_revoker.username,notification_to_create.type_of_notification)
+    return (notification_to_create.vehicle,notification_to_create.status)
 
 
 
