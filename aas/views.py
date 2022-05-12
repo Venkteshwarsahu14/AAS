@@ -15,6 +15,10 @@ import json
 class VehicleViewSet(viewsets.ModelViewSet):
     queryset = vehicle.objects.all()
     serializer_class = VehicleSerializer
+    
+    def partial_update(self, request, *args, **kwargs):
+            kwargs['partial'] = True
+            return self.update(request, *args, **kwargs)
 
     @action(methods=['GET'], detail=False ,url_path='location', url_name='location')
     def getlocation(self ,request ,*args ,**kwargs) :

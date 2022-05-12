@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8b5p#ajg)yh86vil%t-dbcno=_@!3%aemmc^#i06%i#6_ou(0w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','.ngrok.io']
 
 
 # Application definition
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt' ,
     'aas',
 ]
+
 SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -67,7 +68,6 @@ MIDDLEWARE = [
 
 # Channels settings
 ASGI_APPLICATION = "ezcom_backend.asgi.application"
-
 
 CSRF_COOKIE_SECURE = False
 # setting jwt expiration time 
@@ -107,6 +107,14 @@ DATABASES = {
    }
 }
 
+CHANNEL_LAYERS = {
+    "default": {
+        "CONFIG": {
+            "hosts": [('localhost','6379')],
+        },
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+    },
+}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -151,6 +159,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
 }
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

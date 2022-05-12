@@ -1,12 +1,20 @@
 import os
-import django
-from channels.http import AsgiHandler
-from channels.routing import ProtocolTypeRouter
+from channels.routing import ProtocolTypeRouter,URLRouter
+from channels.auth import AuthMiddlewareStack
+from aas import consumers
+
+from django.urls import re_path,path
+from django.core.asgi import get_asgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ezcom_backend.settings')
-django.setup()
 
 application = ProtocolTypeRouter({
-  "http": AsgiHandler(),
-  # We will add WebSocket protocol later, but for now it's just HTTP.
+    "http": get_asgi_application(),
+    "websocket":AuthMiddlewareStack(
+URLRouter(
+[path('aas/notification_testing/',consumers.NotificationConsumer)]
+))
+    
+    
+    
 })
